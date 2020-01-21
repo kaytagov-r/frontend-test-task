@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ActivityTypes from "./components/ActivityTypes";
+import ButtonSubmitFind from "./components/ButtonSubmitFind";
+import CheckboxFreeActivities from "./components/CheckboxFreeActivities";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [checkbox, setCheckbox] = React.useState(false);
+
+    return (
+        <div className="App">
+            <p>Find activity</p>
+            <ActivityTypes/>
+            <CheckboxFreeActivities/>
+            <ButtonSubmitFind checkbox={checkbox}/>
+        </div>
+    );
 }
 
 export default App;
