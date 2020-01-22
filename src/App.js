@@ -31,7 +31,7 @@ function App() {
     };
 
     const changeFreeCheckbox = (e) =>{
-        console.log(e.target.checked);
+        setCheckbox(e.target.checked);
     };
 
     const submitFindActivity = (e) => {
@@ -50,7 +50,7 @@ function App() {
 
             <ActivityTypes onChange={changeActivityTypesSelect}/> <br/>
 
-            <CheckboxFreeActivities onChange={changeFreeCheckbox}/> <br/>
+            <CheckboxFreeActivities checkbox={checkbox} onChange={changeFreeCheckbox}/> <br/>
 
             <ButtonSubmitFind onClick={submitFindActivity}/>
 
