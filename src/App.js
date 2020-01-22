@@ -23,7 +23,11 @@ function App() {
         fetch(url)
             .then(response => response.json())
             .then(activityList => {
-                setActivityList([activityList]);
+                setActivityList(
+                    activityList.error === undefined
+                        ? [activityList]
+                        : []
+                );
                 setLoading(false);
             });
     }
@@ -43,8 +47,7 @@ function App() {
 
     const submitFindActivity = (e) => {
 
-        let url = apiUrl + '?type=' + selectValue;
-        url += checkbox ? '&price=0.0' : '';
+        const url = (apiUrl + '?type=' + selectValue) + (checkbox ? '&price=0.0' : '');
 
         findActivity(url);
     };
@@ -62,7 +65,11 @@ function App() {
 
             <p></p>
 
-            <ActivityList activityList={activityList}/>
+            {
+                activityList.length
+                    ? (<ActivityList activityList={activityList}/>)
+                    : (loading ? null : 'not found activity..')
+            }
 
             {loading && <Loader/>}
 
