@@ -3,10 +3,16 @@ import ActivityTypes from "./components/ActivityTypes";
 import ButtonSubmitFind from "./components/ButtonSubmitFind";
 import CheckboxFreeActivities from "./components/CheckboxFreeActivities";
 import ActivityList from "./components/ActivityList";
+import styled from "styled-components";
 
 function App() {
 
     const [checkbox, setCheckbox] = React.useState(false);
+
+    const AppContainer = styled.div`
+        margin: 0 auto;
+        width: 400px;
+    `;
 
     const activityList = [
         {
@@ -32,13 +38,14 @@ function App() {
 
 
     return (
-        <div className="App">
+        <AppContainer>
             <p>Find activity</p>
-            <ActivityTypes/>
-            <CheckboxFreeActivities/>
+            <ActivityTypes/> <br/>
+            <CheckboxFreeActivities/> <br/>
             <ButtonSubmitFind checkbox={checkbox}/>
+            <p></p>
             <ActivityList activityList={activityList}/>
-        </div>
+        </AppContainer>
     );
 }
 

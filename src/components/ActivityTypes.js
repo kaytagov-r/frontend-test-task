@@ -15,10 +15,13 @@ export default function ActivityTypes() {
     ];
 
     return (
-        <select>
-            {activityTypes.map(activityType => {
-                return <ActivityTypesItem type={activityType} key={activityType.id}/>
-            })}
-        </select>
+        <label>
+            <span style={{marginRight: '10px'}}>Select activity type</span>
+            <select>
+                {activityTypes.map(activityType => {
+                    return <ActivityTypesItem type={activityType} key={activityType.id}/>
+                })}
+            </select>
+        </label>
     )
 }
