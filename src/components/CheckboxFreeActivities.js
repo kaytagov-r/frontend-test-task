@@ -4,7 +4,7 @@ export default function CheckboxFreeActivities(props) {
     return(
         <label>
             <span style={{marginRight: '10px'}}>Show only free</span>
-            <input type='checkbox' checked={props.checkbox && 'checked'} />
+            <input id='freeActivityCheckbox' type='checkbox' onChange={props.onChange}/>
         </label>
     )
 }

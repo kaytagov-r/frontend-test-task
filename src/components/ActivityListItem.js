@@ -12,7 +12,11 @@ export default function ActivityListItem(props) {
     return (
         <ActivityListItem>
             <p className='title'>
-                Activity: <a target='_blank' href={props.activity.link}>{props.activity.activity}</a>
+                Activity: {
+                props.activity.link
+                    ? <a target='_blank' href={props.activity.link}>{props.activity.activity}</a>
+                    : props.activity.activity
+                }
             </p>
             <p className='participants'>
                 Participants: {props.activity.participants}

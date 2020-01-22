@@ -1,7 +1,7 @@
 import React from "react";
 import ActivityTypesItem from "./ActivityTypesItem";
 
-export default function ActivityTypes() {
+export default function ActivityTypes(props) {
     let activityTypes = [
         {id: 1, value: 'education', title: 'Education'},
         {id: 2, value: 'recreational', title: 'Recreational'},
@@ -17,7 +17,7 @@ export default function ActivityTypes() {
     return (
         <label>
             <span style={{marginRight: '10px'}}>Select activity type</span>
-            <select>
+            <select onChange={props.onChange}>
                 {activityTypes.map(activityType => {
                     return <ActivityTypesItem type={activityType} key={activityType.id}/>
                 })}
