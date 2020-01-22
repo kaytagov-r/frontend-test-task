@@ -9,6 +9,7 @@ import Loader from "./components/Loader";
 function App() {
 
     const [checkbox, setCheckbox] = React.useState(false);
+    const [selectValue, setSelectValue] = React.useState('education');
     const [activityList, setActivityList] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
@@ -27,7 +28,7 @@ function App() {
     `;
 
     const changeActivityTypesSelect = (e) => {
-        console.log(e.target.value);
+        setSelectValue(e.target.value);
     };
 
     const changeFreeCheckbox = (e) =>{
@@ -48,7 +49,7 @@ function App() {
 
             <p>Find activity</p>
 
-            <ActivityTypes onChange={changeActivityTypesSelect}/> <br/>
+            <ActivityTypes defaultValue={selectValue} onChange={changeActivityTypesSelect}/> <br/>
 
             <CheckboxFreeActivities checkbox={checkbox} onChange={changeFreeCheckbox}/> <br/>
 

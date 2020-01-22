@@ -17,7 +17,7 @@ export default function ActivityTypes(props) {
     return (
         <label>
             <span style={{marginRight: '10px'}}>Select activity type</span>
-            <select onChange={props.onChange}>
+            <select onChange={props.onChange} defaultValue={props.defaultValue}>
                 {activityTypes.map(activityType => {
                     return <ActivityTypesItem type={activityType} key={activityType.id}/>
                 })}
