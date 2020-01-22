@@ -8,19 +8,25 @@ import Loader from "./components/Loader";
 
 function App() {
 
+    const apiUrl = 'http://www.boredapi.com/api/activity/';
+
     const [checkbox, setCheckbox] = React.useState(false);
     const [selectValue, setSelectValue] = React.useState('education');
     const [activityList, setActivityList] = React.useState([]);
-    const [loading, setLoading] = React.useState(true);
+    const [loading, setLoading] = React.useState(false);
 
-    React.useEffect(() => {
-        fetch('http://www.boredapi.com/api/activity/')
+    React.useEffect(() => {findActivity(apiUrl)}, []);
+
+    function findActivity(url) {
+        setLoading(true);
+
+        fetch(url)
             .then(response => response.json())
             .then(activityList => {
                 setActivityList([activityList]);
                 setLoading(false);
             });
-    }, []);
+    }
 
     const AppContainer = styled.div`
         margin: 0 auto;
@@ -36,12 +42,11 @@ function App() {
     };
 
     const submitFindActivity = (e) => {
-        fetch('http://www.boredapi.com/api/activity/')
-            .then(response => response.json())
-            .then(activityList => {
-                setActivityList([activityList]);
-                setLoading(false);
-            });
+
+        let url = apiUrl + '?type=' + selectValue;
+        url += checkbox ? '&price=0.0' : '';
+
+        findActivity(url);
     };
 
     return (
